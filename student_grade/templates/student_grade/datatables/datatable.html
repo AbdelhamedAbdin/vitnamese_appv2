@@ -1,0 +1,143 @@
+{% load i18n %}
+<section class="center">
+    <div class="scrollbarX">
+        <table id="table_id" class="text-center display table table-striped table-bordered nowrap">
+            <thead class="text-center">
+                <tr>
+                    <th scope="col">
+                        {% trans 'Student' %}
+                    </th>
+                    <th scope="col">
+                        {% trans 'Character' %}
+                    </th>
+                    <th scope="col">
+                        {% trans 'Mirror image' %}
+                    </th>
+                    <th scope="col">
+                        {% trans 'Regularity' %}
+                    </th>
+                    <th scope="col">
+                        {% trans 'Complexity' %}
+                    </th>
+                    <th scope="col">
+                        {% trans 'Grade' %}
+                    </th>
+                    <th scope="col">
+                        {% trans 'Gender' %}
+                    </th>
+                    <th scope="col">
+                        {% trans 'Error class' %}
+                    </th>
+                    <th scope="col">
+                        {% trans 'Error number' %}
+                    </th>
+                    <th scope="col">
+                        {% trans 'Error unit' %}
+                    </th>
+                    <th scope="col">{% trans 'Error type' %}</th>
+                </tr>
+            </thead>
+            <tbody class="dashboard-history">
+                {% for response in all_response %}
+                <tr>
+                    <td data-header="Student">
+                        {{ response.student.student }}
+                    </td>
+                    <td data-header="Character">
+                        {% if 'char' in request.GET and request.GET.char != 'all' %}
+                        <strong>{{ response.character.character }}</strong>
+                        {% else %}
+                        {{ response.character.character }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        <div style="width: 120px; height: 120px">
+                            {% if response.image.url is not None %}
+                            <img style="max-width: 100%; max-height: 100%" src="{{ response.image.url }}" alt="{{ request.image }}"/>
+                            {% else %}
+                                -
+                            {% endif %}
+                        </div>
+                    </td>
+                    <td data-header="Regularity">
+                        {% if 'reg' in request.GET and request.GET.reg != 'all' %}
+                        <strong>{{ response.character.regularity }}</strong>
+                        {% else %}
+                        {{ response.character.regularity }}
+                        {% endif %}
+                    </td>
+                    <td data-header="Complexity">
+                        {% if response.error_type != None %}
+                            {% if 'complixity' in request.GET and request.GET.complexity != 'all' %}
+                            <strong>{{ response.character.complexity }}</strong>
+                            {% else %}
+                                {{ response.character.complexity }}
+                            {% endif %}
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                    <td data-header="Grade">
+                        {% if 'grade' in request.GET and request.GET.grade != 'all' %}
+                        <strong>{{ response.student.grade }}</strong>
+                        {% else %}
+                        {{ response.student.grade }}
+                        {% endif %}
+                    </td>
+                    <td data-header="Gender">
+                        {% if 'gender' in request.GET and request.GET.gender != 'all' %}
+                        <strong>{{ response.student.gender }}</strong>
+                        {% else %}
+                        {{ response.student.gender }}
+                        {% endif %}
+                    </td>
+                    <td data-header="Error class">
+                        {% if response.error_class is not None %}
+                            {% if 'error_class' in request.GET and request.GET.error_class != 'all' %}
+                                <strong>{{ response.error_class }}</strong>
+                            {% else %}
+                                {{ response.error_class }}
+                            {% endif %}
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                    <td data-header="Error number">
+                        {% if response.error_number != None %}
+                            {% if 'error_number' in request.GET and request.GET.error_number != 'all' %}
+                            <strong>{{ response.error_number }}</strong>
+                            {% else %}
+                            {{ response.error_number }}
+                            {% endif %}
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                    <td data-header="Error unit">
+                        {% if response.error_unit != None %}
+                            {% if 'error_unit' in request.GET and request.GET.error_unit != 'all' %}
+                            <strong>{{ response.error_unit }}</strong>
+                            {% else %}
+                            {{ response.error_unit }}
+                            {% endif %}
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                    <td data-header="Error type">
+                        {% if response.error_type != None %}
+                            {% if 'error_type' in request.GET and request.GET.error_type != 'all' %}
+                            <strong>{{ response.error_type }}</strong>
+                            {% else %}
+                                {{ response.error_type }}
+                            {% endif %}
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>

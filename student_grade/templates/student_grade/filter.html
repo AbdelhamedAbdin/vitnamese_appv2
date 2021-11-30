@@ -1,0 +1,131 @@
+{% load i18n %}
+<div class="filtering">
+    <form method="get" action="{% url 'student_grade:error_analysis' %}">
+        <input type="text" hidden name="filtering" value="{{ request.is_visitor }}">
+        <!-- First Filter -->
+        <div class="filter-x">
+            <div class="select-title">
+                {% trans 'Character' %}
+            </div>
+            <div class="select-filter">
+                <div class="filter-label">{% trans 'Character' %}</div>
+                <select class="clear-filter" name="char">
+                    <option value="all">{% trans 'any' %}</option>
+                    {% for character in characters %}
+                    <option {% if char == character %} selected {% endif %} value="{{ character.id }}">{{ character.character }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="select-filter">
+                <div class="filter-label">{% trans 'Regularity' %}</div>
+                <select class="clear-filter" name="reg">
+                    <option value="all">{% trans 'any' %}</option>
+                    {% for character in regularity %}
+                    <option {% if reg == character %} selected {% endif %} value="{{ character }}">{{ character }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="select-filter">
+                <div class="filter-label">{% trans 'Complexity' %}</div>
+                <select class="clear-filter" name="complex">
+                    <option value="all">{% trans 'any' %}</option>
+                    {% for comp in CHARACTER_COMPLEX %}
+                        <option{% if complex == comp %} selected {% endif %} value="{{ comp }}">{{ comp }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <!-- Second Filter -->
+        <div class="filter-x mt-3">
+            <div class="select-title">
+                {% trans 'Student' %}
+            </div>
+            <div class="select-filter">
+                <div class="filter-label">{% trans 'Grade' %}</div>
+                <select class="clear-filter" name="grade">
+                    <option value="all">{% trans 'any' %}</option>
+                    {% for student in STUDENT_GRADE %}
+                    <option {% if student == grade %} selected {% endif %} value="{{ student }}">{{ student }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="select-filter">
+                <div class="filter-label">{% trans 'Gender' %}</div>
+                <select class="clear-filter" name="gender">
+                    <option value="all">{% trans 'any' %}</option>
+                    {% for gend in STUDENT_GENDER %}
+                        <option {% if gender == gend %} selected {% endif %} value="{{ gend }}">{{ gend }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <!-- Fourth Filter -->
+        <div class="filter-x mt-3">
+            <div class="select-title">
+                {% trans 'Error Answer' %}
+            </div>
+            <div class="select-filter">
+                <div class="filter-label">{% trans 'Error class' %}</div>
+                <select class="clear-filter" name="error_class">
+                    <option value="all">{% trans 'any' %}</option>
+                    {% for error in error_class %}
+                        {% if error != None %}
+                        <option {% if error == err_class %} selected {% endif %} value="{{ error }}">{{ error }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="select-filter">
+                <div class="filter-label">{% trans 'Error number' %}</div>
+                <select class="clear-filter" name="error_number">
+                    <option value="all">{% trans 'any' %}</option>
+                    {% for error in error_number %}
+                        {% if error != None %}
+                        <option {% if error == err_number %} selected {% endif %} value="{{ error }}">{{ error }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="select-filter">
+                <div class="filter-label">{% trans 'Error unit' %}</div>
+                <select class="clear-filter" name="error_unit">
+                    <option value="all">{% trans 'any' %}</option>
+                    {% for error in error_unit %}
+                        {% if error != None %}
+                        <option {% if error == err_unit %} selected {% endif %} value="{{ error }}">{{ error }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="select-filter">
+                <div class="filter-label">{% trans 'Error type' %}</div>
+                <select class="clear-filter" name="error_type">
+                    <option value="all">{% trans 'any' %}</option>
+                    {% for error in error_type %}
+                        {% if error != None %}
+                        <option {% if error == err_type %} selected {% endif %} value="{{ error }}">{{ error }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <span id="clear-filter">Clear Filter</span>
+        {% if 'error' not in request.GET %}
+            <input class="clear-filter mb-4" type="text" id="errorSubmit" name="error" value="errorClass" hidden>
+        {% else %}
+            <input class="clear-filter mb-4" type="text" id="errorSubmit" name="error" value="{{ request.GET.error }}" hidden>
+        {% endif %}
+
+        {% if 'distribution' not in request.GET %}
+            <input class="sub-tab" type="text" id="sub-tab-data" name="distribution" value="overall" hidden>
+        {% else %}
+            <input class="sub-tab" type="text" id="sub-tab-data" name="distribution" value="{{ request.GET.distribution }}" hidden>
+        {% endif %}
+        <input type="submit" id="filter_btn" hidden>
+    </form>
+</div>

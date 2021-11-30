@@ -1,0 +1,101 @@
+{% load custom_filter %}
+{% load i18n %}
+<table class="table text-center table-bordered">
+    <thead>
+        <tr style="max-width: 100%">
+            <th scope="col">{% trans 'Error number' %}</th>
+            {% for gender in STUDENT_GENDER %}
+                <th scope="col">{{ gender }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        <div class="row">
+            {% for get_item in error_number_unique %}
+                {% if get_item %}
+                <tr>
+                    <td style="width: 10%;font-size: 16px">
+                        <div>{{ get_item }}</div>
+                    </td>
+                    <td style="width: 45%">
+                        <div class="div-head col-lg-12 mt-3">
+                            {% for get_gender in resp|gender:get_item %}
+                                {% if get_gender.0 != '' %}
+                                    {% if get_gender.0 == STUDENT_GENDER.0 %}
+                                    <div style="display: inline-block;position: relative" class="div-head col-sm-3">
+                                        <img data-pk="{{ get_gender.1 }}" class="img-thumbnail rounded data-tooltip" style="max-width: 100%" src="https://d1g3ayfrf0i21j.cloudfront.net/media/{{ get_gender.2 }}">
+                                        <div class="custom-tooltip"></div>
+                                    </div>
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </td>
+                    <td style="width: 45%">
+                        <div class="div-head col-lg-12 mt-3">
+                            {% for get_gender in resp|gender:get_item %}
+                                {% if get_gender.0 != '' %}
+                                    {% if get_gender.0 == STUDENT_GENDER.1 %}
+                                    <div style="display: inline-block;position: relative" class="div-head col-sm-3">
+                                        <img data-pk="{{ get_gender.1 }}" class="img-thumbnail rounded data-tooltip" style="max-width: 100%" src="https://d1g3ayfrf0i21j.cloudfront.net/media/{{ get_gender.2 }}">
+                                        <div class="custom-tooltip"></div>
+                                    </div>
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </td>
+                </tr>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </tbody>
+</table>
+<script>
+    $(document).ready(function () {
+        let elem_hovers = $("img.data-tooltip");
+        function data_structure(custom, data, in_out) {
+            custom.html(
+                "<p>Student: "+data.student+"</p>"+"<p>Grade: "+data.grades+"</p>"+
+                "<p>Gender: "+data.gender+"</p>"+"<p>Character: "+data.character+"</p>"+
+                "<p>Regularity: "+data.regularity+"</p>"+"<p>Complexity: "+data.complexity+"</p>"+
+                "<p>Error Class: "+data.error_class+"</p>"+"<p>Error Number: "+data.error_number+"</p>"+
+                "<p>Error Unit: "+data.error_unit+"</p>"+"<p>Error Type: "+data.error_type+"</p>"
+            );
+            custom.css('display', in_out);
+            if (in_out === 'none') {
+                custom.html(null)
+            }
+        }
+        elem_hovers.each(function () {
+            let custom_elem = $(this).siblings(".custom-tooltip");
+            $(this).mouseover(function () {
+                $.ajax({
+                    url: '',
+                    method: 'get',
+                    data: {
+                        'data': $(this).data('pk')
+                    },
+                    success: function(data) {
+                        console.log(data);
+                        data_structure(custom_elem, data, 'block');
+                    }
+                });
+            });
+
+            $(this).mouseout(function () {
+                $.ajax({
+                    url: '',
+                    method: 'get',
+                    data: {
+                        'data': $(this).data('pk')
+                    },
+                    success: function(data) {
+                        console.log(data);
+                        data_structure(custom_elem, data, 'none');
+                    }
+                });
+            })
+        });
+    });
+</script>

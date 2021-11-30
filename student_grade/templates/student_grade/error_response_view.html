@@ -1,0 +1,253 @@
+{% extends 'base.html' %}
+{% block title %} response table {% endblock %}
+{% load i18n %}
+
+{% block body %}
+    <!-- Filtering -->
+    <div class="response mt-3">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 col-lg-3">
+                    {% include 'student_grade/filter.html' %}
+                </div>
+                <!-- Add graph and tables in the same space -->
+                <div class="sub-navs col-lg-9 mt-sm" style="overflow-x: auto">
+                    {% if all_response.paginator.count != 0 %}
+                        {% if request.GET.distribution != '' %}
+                        <ul class="nav nav-pills nav-fill">
+                            <li class="sub-nav nav-item mt-1">
+                                <a class="nav-link btn btn-outline-primary {% if request.GET.distribution == 'overall' or 'distribution' not in request.GET  %}active{% else %}text-primary{% endif %}" data-distreb="overall">{% trans 'Overall Distribution' %}</a>
+                            </li>
+                            {% if gender is None or gender == 'all' %}
+                            <li class="sub-nav nav-item mt-1">
+                                <a class="nav-link btn btn-outline-primary {% if request.GET.distribution == 'gender' %}active{% else %}text-primary{% endif %}" data-distreb="gender">{% trans 'Gender' %}</a>
+                            </li>
+                            {% endif %}
+                            {% if grade is None or grade == 'all' %}
+                            <li class="sub-nav nav-item mt-1">
+                                <a class="nav-link btn btn-outline-primary {% if request.GET.distribution == 'grade' %}active{% else %}text-primary{% endif %}" data-distreb="grade">{% trans 'Grade' %}</a>
+                            </li>
+                            {% endif %}
+                            {% if character_req is None or character_req == 'all' %}
+                                {% if reg is None or reg == 'all' %}
+                                <li class="sub-nav nav-item mt-1">
+                                    <a class="nav-link btn btn-outline-primary {% if request.GET.distribution == 'regular' %}active{% else %}text-primary{% endif %}" data-distreb="regular">{% trans 'Regularity' %}</a>
+                                </li>
+                                {% endif %}
+                            {% endif %}
+                            {% if character_req is None or character_req == 'all' %}
+                                {% if complex is None or complex == 'all' %}
+                                <li class="sub-nav nav-item mt-1">
+                                    <a class="nav-link btn btn-outline-primary {% if request.GET.distribution == 'complex' %}active{% else %}text-primary{% endif %}" data-distreb="complex">{% trans 'Complexity' %}</a>
+                                </li>
+                                {% endif %}
+                            {% endif %}
+                        </ul>
+                        {% endif %}
+                    {% endif %}
+
+                    {% if err_number != pick_specific_error %}
+                        <!-- get graph tabs based on tabs heading -->
+                        {% if request.GET.distribution == 'overall' or 'distribution' not in request.GET %}
+                            <div>
+                                {% include 'student_grade/tabs/error_number_tab.html' %}
+                            </div>
+                        {% elif request.GET.distribution == 'gender' %}
+                            {% if gender is None or gender == 'all' %}
+                            <div class="col-sm-12">
+                                {% if gender_group %}
+                                <div style="">
+                                    <div style="max-width: 100%;max-height: 100%">
+                                        {{ gender_group|safe }}
+                                    </div>
+                                </div>
+                                {% endif %}
+                            </div>
+                            {% endif %}
+                            <div class="data-style col-lg-12 mb-4 mt-4">
+                                {% include 'student_grade/datatables/gender_table.html' %}
+                            </div>
+                        {% elif request.GET.distribution == 'grade' %}
+                            {% if grade is None or grade == 'all' %}
+                            <div class="col-sm-12">
+                                {% if grade_group %}
+                                <div style="">
+                                    <div style="max-width: 100%;max-height: 100%">
+                                        {{ grade_group|safe }}
+                                    </div>
+                                </div>
+                                {% endif %}
+                            </div>
+                            {% endif %}
+                            <div class="data-style col-lg-12 mb-4 mt-4">
+                                {% include 'student_grade/datatables/grade_table.html' %}
+                            </div>
+                        {% elif request.GET.distribution == 'regular' %}
+                            {% if character_req is None or character_req == 'all' %}
+                                {% if reg is None or reg == 'all' %}
+                                <div class="col-sm-12">
+                                    {% if regular_group %}
+                                    <div style="">
+                                        <div style="max-width: 100%;max-height: 100%">
+                                            {{ regular_group|safe }}
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                {% endif %}
+                            {% endif %}
+                            <div class="data-style col-lg-12 mb-4 mt-4">
+                                {% include 'student_grade/datatables/regularity_table.html' %}
+                            </div>
+                        {% elif request.GET.distribution == 'complex' %}
+                            {% if character_req is None or character_req == 'all' %}
+                                {% if complex is None or complex == 'all' %}
+                                <div class="col-sm-12">
+                                    {% if complex_group %}
+                                    <div style="">
+                                        <div style="max-width: 100%;max-height: 100%">
+                                            {{ complex_group|safe }}
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                {% endif %}
+                            {% endif %}
+                            <div class="data-style col-lg-12 mb-4 mt-4">
+                                {% include 'student_grade/datatables/complexity_table.html' %}
+                            </div>
+                        {% endif %}
+                    {% else %}
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            {% if err_number == pick_specific_error %}
+                                <li class="nav-item">
+                                    <a data-error="errorClass" class="nav-link {% if request.GET.error == 'errorClass' %}active{% endif %}" id="errorClass-tab" role="tab" aria-controls="ErrorClass" aria-selected="true">{% trans 'Error Class' %}</a>
+                                </li>
+                                {% if err_unit == None or err_unit == pick_specific_error_sec %}
+                                    <li class="nav-item">
+                                        <a data-error="errorUnit" class="nav-link {% if request.GET.error == 'errorUnit' %}active{% endif %}" id="errorUnit-tab" role="tab" aria-controls="ErrorUnit" aria-selected="false">{% trans 'Error Unit' %}</a>
+                                    </li>
+                                {% endif %}
+                                <li class="nav-item">
+                                    <a data-error="errorType" class="nav-link {% if request.GET.error == 'errorType' %}active{% endif %}" id="errorType-tab" data-toggle="tab" role="tab" aria-controls="ErrorType" aria-selected="false">{% trans 'Error Type' %}</a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                        
+                        <!-- Tab content -->
+                        <div class="tab-content" id="myTabContent">
+                            {% if err_number == pick_specific_error and request.GET.error == "errorClass" %}
+                            <div class="tab-pane {% if request.GET.error == 'errorClass' %}show active{% else %} fade {% endif %}" id="ErrorClass" role="tabpanel" aria-labelledby="errorClass-tab">
+                                {% include 'student_grade/tabs/error_class_tab.html' %}
+                            </div>
+                            {% elif err_number == pick_specific_error and request.GET.error == "errorUnit" %}
+                            <div class="tab-pane {% if request.GET.error == 'errorUnit' %}show active{% else %} fade {% endif %}" id="ErrorUnit" role="tabpanel" aria-labelledby="errorUnit-tab">
+                                {% include 'student_grade/tabs/error_unit_tab.html' %}
+                            </div>
+                            {% elif err_number == pick_specific_error and request.GET.error == "errorType" %}
+                            <div class="tab-pane {% if request.GET.error == 'errorType' %}show active{% else %} fade {% endif %}" id="ErrorType" role="tabpanel" aria-labelledby="errorType-tab">
+                                {% include 'student_grade/tabs/error_type_tab.html' %}
+                            </div>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </div>
+                {% if all_response.paginator.count != 0 %}
+                    {% if err_number == pick_specific_error %}
+                        <div class="col-lg-12 mb-4 mt-4">
+                            {% include 'student_grade/datatables/datatable.html' %}
+                        </div>
+                    {% endif %}
+                {% endif %}
+                <!-- Show overall datatable if distribution was equal to overall or was empty -->
+                {% if request.GET.distribution == 'overall' or request.GET.distribution is None %}
+                    <div class="col-lg-12 mb-4 mt-4">
+                        {% include 'student_grade/datatables/datatable.html' %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Paginator -->
+            {% if all_response.paginator.count > 50 %}
+                {% if request.GET.distribution != 'gender' and request.GET.distribution != 'grade' and request.GET.distribution != 'regular' and request.GET.distribution != 'complex' %}
+                <div class="paginator-section mt-4">
+                    <nav aria-label="...">
+                    {% load mathfilters %}
+                        <ul class="pagination">
+                            <li class="page-item not-active {% if not prev_url %} disabled {% endif %}">
+                                <a href="{{ prev_url }}" class="page-link">Previous</a>
+                            </li>
+
+                            {% with lt_num=all_response.number|sub:1 add_num=7 %}
+                            {% if not lt_num < add_num %}
+                                <li class="page-item not-active">
+                                    <a class="page-link" href="{{ request.get_full_path }}&page_number=1">
+                                        1
+                                    </a>
+                                </li>
+                                <li class="page-item not-active">
+                                    <a class="page-link disabled">...</a>
+                                </li>
+                            {% endif %}
+                            {% endwith %}
+
+                            {% for n in all_response.paginator.page_range %}
+                                {% if all_response.number == n %}
+                                    <li class="page-item active">
+                                        <a class="page-link" href="{{ request.get_full_path }}&page_number={{ n }}">
+                                            {{ n }}
+                                            <span class="sr-only">(current)</span>
+                                        </a>
+                                    </li>
+                                {% elif n > all_response.number|add:-4 and n < all_response.number|add:4 %}
+                                    <li class="page-item not-active">
+                                        <a class="page-link" href="{{ request.get_full_path }}&page_number={{ n }}">
+                                            {{ n }}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+
+                            {% with gt_num=all_response.paginator.count|intdiv:50|add:1 sub_num=all_response.number %}
+                            {% if not gt_num|sub:sub_num < 7 %}
+                            <li class="page-item">
+                                <a class="page-link disabled">...</a>
+                            </li>
+                            <li class="page-item not-active">
+                                <a class="page-link" href="{{ request.get_full_path }}&page_number={{ all_response.paginator.count|intdiv:20|add:1 }}">
+                                    {{ all_response.paginator.count|intdiv:50|add:1 }}
+                                </a>
+                            </li>
+                            {% endif %}
+                            {% endwith %}
+
+                            <li class="page-item not-active{% if not next_url %} disabled {% endif %}">
+                                <a class="page-link" href="{{ next_url }}">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+    <script>
+        // Set value based on selected data in tab bar
+        let errorClassTab = $("#errorClass-tab");
+        let errorUnitTab = $("#errorUnit-tab");
+        let errorTypeTab = $("#errorType-tab");
+        let errorSubmit = $("#errorSubmit")
+        errorClassTab.click(function () {
+            errorSubmit.val($(this).data('error'));
+            $("#filter_btn").click();
+        })
+        errorUnitTab.click(function () {
+            errorSubmit.val($(this).data('error'));
+            $("#filter_btn").click();
+        })
+        errorTypeTab.click(function () {
+            errorSubmit.val($(this).data('error'));
+            $("#filter_btn").click();
+        })
+    </script>
+{% endblock %}

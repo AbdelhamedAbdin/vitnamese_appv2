@@ -1,0 +1,228 @@
+/* Global */
+body {
+    background-color: #E1E1E1;
+}
+.mt-1 {
+    margin-top: 1rem;
+}
+.mt-2 {
+    margin-top: 2rem;
+}
+.mt-3 {
+    margin-top: 3rem;
+}
+.mt-4 {
+    margin-top: 4rem;
+}
+.mt-5 {
+    margin-top: 5rem;
+}
+.mt-6 {
+    margin-top: 6rem;
+}
+.mb-1 {
+    margin-bottom: 1rem;
+}
+.mb-4 {
+    margin-bottom: 4rem;
+}
+@media (max-width: 992px) {
+    .mt-sm {
+        margin-top: 15px !important;
+    }
+}
+/* base */
+button.lang-button {
+    background: none!important;
+    border: none;
+    padding: 0!important;
+    font-family: arial, sans-serif;
+    color: #069;
+    /*text-decoration: underline;*/
+    cursor: pointer;
+    outline: none;
+    display: inline-block;
+}
+nav.navbar.navbar-expand-lg {
+    background-image: url('https://d1g3ayfrf0i21j.cloudfront.net/media/Bannerv2.png');
+    height: 170px;
+    background-repeat: round;
+    background-blend-mode: overlay;
+}
+.nav-color {
+    color: #FFF !important;
+}
+button[name='language'] {
+    outline: none !important;
+}
+/* response view */
+.table td, .table th {
+    border-top: 0 !important;
+}
+.paginator-section .pagination {
+    justify-content: center;
+}
+.response .table {
+    background-color: #f7fafc;
+    color: #000;
+    border: 1px solid #aaa;
+}
+.response .filter-x {
+    border: 1px solid #cbd5e0;
+}
+.response .select-title {
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #f7fafc;
+    border-bottom: 1px solid #cbd5e0;
+}
+.response .select-filter {
+    padding: 0.75rem;
+}
+.response .select-filter .filter-label {
+    color: #718096;
+    font-size: .9rem;
+}
+.response .select-filter select {
+    background-color: #fff;
+    padding: 0 5px;
+    height: 30px;
+    border: 1px solid #a0aec0;
+    width: 100%;
+}
+.response .table__wrapper .fa-arrow-right {
+    display: inline-block;
+    margin-left: 5%;
+}
+.response .table__wrapper .sliders {
+    font-size: 16px;
+}
+/* Test */
+
+.response table {
+  width: 100%;
+}
+.response table tbody tr td {
+  border-bottom: solid 1px #000;
+  text-align: center;
+}
+.response .mCSB_horizontal.mCSB_inside > .mCSB_container {
+  margin-bottom: 0;
+}
+
+.mCSB_draggerContainer {
+  display: none;
+}
+
+.response .mCSB_scrollTools.mCSB_scrollTools_horizontal {
+  position: absolute;
+  top: 0;
+  transform: translateY(-50%);
+}
+
+.response .mCSB_buttonLeft,
+.response .mCSB_buttonRight {
+  background-color: #000;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px !important;
+}
+.response ul.nav-tabs li.nav-item:hover {
+    cursor: pointer;
+}
+.response #clear-filter {
+    color: #cc0000;
+    font-size: 14px;
+    padding-top: 15px;
+    display: none;
+    cursor: pointer;
+}
+@media (max-width: 992px) {
+    .response .filtering {
+        max-width: 100% !important;
+    }
+}
+.response .sub-navs {
+    margin-bottom: 30px;
+}
+.response .sub-navs li.sub-nav {
+    margin-right: 4px;
+}
+.response .sub-navs .sub-nav a:hover {
+    color: #FFF !important;
+    transition: all .3s ease-in-out;
+}
+.response table .table-data {
+    margin-left: auto;
+    margin-right: auto;
+}
+@media (max-width: 500px) {
+    .response .custom-image-size {
+        max-width: 150% !important;
+    }
+    .response table.table-bordered {
+        overflow-x: auto;
+    }
+    .response .error-number-column {
+        font-size: 12px
+    }
+}
+.response .info-sign {
+    position: absolute;
+    top: 6px;
+    right: 22px;
+    border: 1px solid;
+    color: #FFF;
+    background-color: #00000073;
+    width: 17px;
+    border-radius: 50%;
+    padding: 2px;
+    font-size: 10px;
+}
+.tooltip .tooltip-inner p {
+    padding: 0;
+    margin-bottom: 5px;
+    text-align: left;
+    font-size: 13px;
+}
+.response img.data-tooltip {
+    position: relative;
+}
+.response .custom-tooltip {
+    display: none;
+    position: absolute;
+    background-color: #111111e6;
+    color: #FFF;
+    padding: 5px;
+    z-index: 999;
+    top: -1rem;
+    right: -6rem;
+    border-radius: 3px;
+    font-size: 13px;
+    text-align: left;
+    width: 150px;
+}
+.response .custom-tooltip p {
+    margin-bottom: 0;
+}
+.response .data-style td {
+    padding: 0 !important;
+}
+.response .data-style td .div-head {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+.response .table td, .response .table th {
+    border-top: none !important;
+}
+.response .table tr td:not(:first-of-type) {
+    display: table-cell !important;
+}
+.table-bordered thead td, .table-bordered thead th {
+    border-bottom-width: 1px !important;
+}
+/* Start Intro */
+.intro .title {
+    font-size: 20px;
+}
+/* End Intro */

@@ -1,0 +1,72 @@
+{% if err_number == pick_specific_error and request.GET.error == "errorClass" %}
+    {% if all_response.paginator.count != 0 %}
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                <div class="col-md-5">
+                    {% if pie_graph %}
+                    <div style="width: 350px;margin-left: auto;margin-right: auto">
+                        <div style="max-width: 100%;max-height: 100%">
+                            {{ pie_graph|safe }}
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+                {% if gender is None or gender == 'all' %}
+                <div class="col-md-7">
+                    {% if gender_group %}
+                    <div style="">
+                        <div style="max-width: 100%;max-height: 100%">
+                            {{ gender_group|safe }}
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+                {% endif %}
+                {% if grade is None or grade == 'all' %}
+                <div class="col-md-4">
+                    {% if gender_group %}
+                    <div style="">
+                        <div style="max-width: 100%;max-height: 100%">
+                            {{ grade_group|safe }}
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+                {% endif %}
+                {% if character_req is None or character_req == 'all' %}
+                    {% if reg is None or reg == 'all' %}
+                    <div class="col-md-4">
+                        {% if regular_group %}
+                        <div style="">
+                            <div style="max-width: 100%;max-height: 100%">
+                                {{ regular_group|safe }}
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                {% endif %}
+
+                {% if character_req is None or character_req == 'all' %}
+                    {% if complex is None or complex == 'all' %}
+                    <div class="col-md-4">
+                        {% if complex_group %}
+                        <div style="">
+                            <div style="max-width: 100%;max-height: 100%">
+                                {{ complex_group|safe }}
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                {% endif %}
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <p>No results were found. Please adjust the search criteria and try again.</p>
+    {% endif %}
+{% else %}
+    <p>No results were found. Please adjust the search criteria and try again.</p>
+{% endif %}

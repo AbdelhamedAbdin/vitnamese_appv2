@@ -1,0 +1,101 @@
+{% load i18n %}
+{% load custom_filter %}
+<table class="table text-center table-bordered">
+    <thead>
+        <tr style="max-width: 100%">
+            <th scope="col" style="">{% trans 'Error number' %}</th>
+            {% for comp in CHARACTER_COMPLEX %}
+                <th scope="col">{{ comp }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        <div class="row">
+            {% for get_item in error_number_unique %}
+                {% if get_item is not None %}
+                <tr>
+                    <div class="col-lg-2">
+                        <td style="font-size: 16px">
+                            <div>{{ get_item }}</div>
+                        </td>
+                    </div>
+                    <div class="col-lg-5">
+                        <td class="div-head">
+                            {% for get_complex in resp|complex:get_item %}
+                                {% if get_complex.0 != '' %}
+                                    {% if get_complex.0 == CHARACTER_COMPLEX.0 %}
+                                    <div style="display: inline-block;position: relative" class="div-head col-sm-4 col-md-3">
+                                        <img data-pk="{{ get_complex.1 }}" class="img-thumbnail rounded data-tooltip" style="max-width: 100%" src="https://d1g3ayfrf0i21j.cloudfront.net/media/{{ get_complex.2 }}">
+                                        <div class="custom-tooltip"></div>
+                                    </div>
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                    </div>
+                    <div class="col-lg-5">
+                        <td class="div-head">
+                            {% for get_complex in resp|complex:get_item %}
+                                {% if get_complex.0 != '' %}
+                                    {% if get_complex.0 == CHARACTER_COMPLEX.1 %}
+                                    <div style="display: inline-block;position: relative" class="div-head col-sm-4 col-md-3">
+                                        <img data-pk="{{ get_complex.1 }}" class="img-thumbnail rounded data-tooltip" style="max-width: 100%" src="https://d1g3ayfrf0i21j.cloudfront.net/media/{{ get_complex.2 }}">
+                                        <div class="custom-tooltip"></div>
+                                    </div>
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                    </div>
+                </tr>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </tbody>
+</table>
+<script>
+    $(document).ready(function () {
+        let elem_hovers = $("img.data-tooltip");
+        function data_structure(custom, data, in_out) {
+            custom.html(
+                "<p>Student: "+data.student+"</p>"+"<p>Grade: "+data.grades+"</p>"+
+                "<p>Gender: "+data.gender+"</p>"+"<p>Character: "+data.character+"</p>"+
+                "<p>Regularity: "+data.regularity+"</p>"+"<p>Complexity: "+data.complexity+"</p>"+
+                "<p>Error Class: "+data.error_class+"</p>"+"<p>Error Number: "+data.error_number+"</p>"+
+                "<p>Error Unit: "+data.error_unit+"</p>"+"<p>Error Type: "+data.error_type+"</p>"
+            );
+            custom.css('display', in_out);
+            if (in_out === 'none') {
+                custom.html(null)
+            }
+        }
+        elem_hovers.each(function () {
+            let custom_elem = $(this).siblings(".custom-tooltip");
+            $(this).mouseover(function () {
+                $.ajax({
+                    url: '',
+                    method: 'get',
+                    data: {
+                        'data': $(this).data('pk')
+                    },
+                    success: function(data) {
+                        data_structure(custom_elem, data, 'block');
+                    }
+                });
+            });
+
+            $(this).mouseout(function () {
+                $.ajax({
+                    url: '',
+                    method: 'get',
+                    data: {
+                        'data': $(this).data('pk')
+                    },
+                    success: function(data) {
+                        data_structure(custom_elem, data, 'none');
+                    }
+                });
+            })
+        });
+    });
+</script>

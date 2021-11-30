@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+
+{% block title %} response table {% endblock %}
+{% load i18n %}
+
+{% block body %}
+    <!-- Graphs -->
+    {% if all_response.paginator.count != 0 %}
+    <div class="data-graph">
+        <div class="container-fluid">
+            <div class="row">
+
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="response mt-3">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="filtering">
+                        <form method="get" action="{% url 'student_grade:accuracy_analysis' %}">
+                            <input type="text" hidden name="filtering" value="{{ request.is_visitor }}">
+                            <!-- First Filter -->
+                            <div class="filter-x">
+                                <div class="select-title">
+                                    {% trans 'Character' %}
+                                </div>
+                                <div class="select-filter">
+                                    <div class="filter-label">{% trans 'Character' %}</div>
+                                    <select class="clear-filter" name="char">
+                                        <option value="all">{% trans 'any' %}</option>
+                                        {% for character in characters %}
+                                        <option {% if char == character %} selected {% endif %} value="{{ character.id }}">{{ character.character }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+
+                                <div class="select-filter">
+                                    <div class="filter-label">{% trans 'Regularity' %}</div>
+                                    <select class="clear-filter" name="reg">
+                                        <option value="all">{% trans 'any' %}</option>
+                                        {% for character in regularity %}
+                                        <option {% if reg == character %} selected {% endif %} value="{{ character }}">{{ character }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+
+                                <div class="select-filter">
+                                    <div class="filter-label">{% trans 'Complexity' %}</div>
+                                    <select class="clear-filter" name="complex">
+                                        <option value="all">{% trans 'any' %}</option>
+                                        {% for comp in CHARACTER_COMPLEX %}
+                                            <option{% if complex == comp %} selected {% endif %} value="{{ comp }}">{{ comp }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Second Filter -->
+                            <div class="filter-x mt-3">
+                                <div class="select-title">
+                                    {% trans 'Student' %}
+                                </div>
+                                <div class="select-filter">
+                                    <div class="filter-label">{% trans 'Grade' %}</div>
+                                    <select class="clear-filter" name="grade">
+                                        <option value="all">{% trans 'any' %}</option>
+                                        {% for student in STUDENT_GRADE %}
+                                        <option {% if student == grade %} selected {% endif %} value="{{ student }}">{{ student }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+
+                                <div class="select-filter">
+                                    <div class="filter-label">{% trans 'Gender' %}</div>
+                                    <select class="clear-filter" name="gender">
+                                        <option value="all">{% trans 'any' %}</option>
+                                        {% for gend in STUDENT_GENDER %}
+                                            <option {% if gender == gend %} selected {% endif %} value="{{ gend }}">{{ gend }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <span id="clear-filter">Clear Filter</span>
+                            <input type="submit" id="filter_btn" hidden>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-lg-9" style="overflow-x: auto">
+                    <div class="row">
+                    {% if all_response.paginator.count != 0 %}
+                        <div class="col-lg-5">
+                            {% if pie_graph %}
+                            <div style="margin-left: auto;margin-right: auto">
+                                <div style="max-width: 100%;max-height: 100%">
+                                    {{ pie_graph|safe }}
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% if gender is None or gender == 'all' %}
+                        <div class="col-sm-12 col-lg-7">
+                            {% if gender_group %}
+                            <div style="">
+                                <div style="max-width: 100%;max-height: 100%">
+                                    {{ gender_group|safe }}
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                        {% if grade is None or grade == 'all' %}
+                        <div class="col-sm-12 col-lg-6">
+                            {% if grade_group %}
+                            <div style="">
+                                <div style="max-width: 100%;max-height: 100%">
+                                    {{ grade_group|safe }}
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+
+                        {% if character_req is None or character_req == 'all' %}
+                            {% if reg is None or reg == 'all' %}
+                            <div class="col-sm-12 col-lg-6">
+                                {% if regular_group %}
+                                <div style="">
+                                    <div style="max-width: 100%;max-height: 100%">
+                                        {{ regular_group|safe }}
+                                    </div>
+                                </div>
+                                {% endif %}
+                            </div>
+                            {% endif %}
+                        {% endif %}
+
+                        {% if character_req is None or character_req == 'all' %}
+                            {% if complex is None or complex == 'all' %}
+                            <div class="col-sm-12 col-lg-6">
+                                {% if complex_group %}
+                                <div style="">
+                                    <div style="max-width: 100%;max-height: 100%">
+                                        {{ complex_group|safe }}
+                                    </div>
+                                </div>
+                                {% endif %}
+                            </div>
+                            {% endif %}
+                        {% endif %}
+                    {% else %}
+                        <p>No results were found. Please adjust the search criteria and try again.</p>
+                    {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

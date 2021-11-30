@@ -1,0 +1,160 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %} Introduction {% endblock %}
+
+{% block body %}
+    {% load static %}
+    <div class="intro">
+        <div class="container">
+            <!-- Description -->
+            <div class="description">{% trans 'Corpus Description' %}</div>
+            <div class="paragraph">
+                <p>{% blocktrans %}Chinese-character-handwriting (CCW) has been acknowledged as the most challenging aspect of Chinese literacy due to the special properties of Chinese logography. Students who learn Chinese as a second language (CSL) usually lag in and get intimidated by learning CCW (Ke, 1996). To deepen the understanding of what difficulties CSL students face and how they learn CCW within different L1 language backgrounds, and further provide pedagogical benefit that are based on first-hand authentic materials, we set to construct a learner corpus of CCW error and make it reachable as an online resource for researchers and educators.{% endblocktrans %}</p>
+                <p>{% blocktrans %}The learner corpus of CCW error is compiled by two sets of data. The first set was collected through a writing-to-dictation test of Chinese simplified characters by *** Vietnam university students who are majoring in Chinese. The second set was collected via a delayed copying of ** Chinese concrete words (traditional characters) by *** NCS non-Chinese-speaker (NCS) students in Hong Kong.{% endblocktrans %}</p>
+                <p>{% blocktrans %}The tag-set for error-annotation is conducted within a framework called the four-level composition of Chinese characters (Leung, 2009; Liang, 2019). According to this framework, character is the basic unit of Chinese handwriting. Three tiers of sub-character constituents are involved in the composition of characters (Table 1). Strokes are the smallest constituents rendered when a pen touches and leaves a paper. Radicals refer to phonetic or semantic radicals which give clues to sound or meaning of the compound, the major group of Chinese characters (over 80% (Shu & Anderson, 1997)). Logographemes are composed by strokes directly and recur consistently and independently as integral constituents in radicals or characters (Lau, 2020).{% endblocktrans %}</p>
+            </div>
+            <!-- Table 1 -->
+            <div class="table-1 mt-2">
+                <p class="text-center">{% blocktrans %}Table 1. Grain sizes of orthographic units in Chinese (Liang, 2019){% endblocktrans %}</p>
+                <table class="mb-3">
+                    <thead>
+                        <tr>
+                            <th>{% trans 'Whole-character' %}</th>
+                            <th>清</th>
+                            <th>青</th>
+                            <th>休</th>
+                            <th>木</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{% trans 'Radical' %}</td>
+                            <td><img style="width:19px; height: 19px; display: inline-block" src="https://d1g3ayfrf0i21j.cloudfront.net/media/char1.png">青</td>
+                            <td></td>
+                            <td>亻木</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>{% trans 'Logographeme' %}</td>
+                            <td><img style="width:55px; height: 20px; display: inline-block" src="https://d1g3ayfrf0i21j.cloudfront.net/media/char2.png"></td>
+                            <td><img style="width:55px; height: 20px; display: inline-block" src="https://d1g3ayfrf0i21j.cloudfront.net/media/char2.png"></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>{% trans 'Stroke' %}</td>
+                            <td><img style="width:55px; height: 20px; display: inline-block" src="https://d1g3ayfrf0i21j.cloudfront.net/media/char3.png"></td>
+                            <td><img style="width:55px; height: 20px; display: inline-block" src="https://d1g3ayfrf0i21j.cloudfront.net/media/char4.png"></td>
+                            <td><img style="width:55px; height: 20px; display: inline-block" src="https://d1g3ayfrf0i21j.cloudfront.net/media/char4.png"></td>
+                            <td><img style="width:55px; height: 20px; display: inline-block" src="https://d1g3ayfrf0i21j.cloudfront.net/media/char6.png"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="paragraph">
+                    <p>
+                    {% blocktrans %}CCW errors traditionally have been divided into two kinds: cuozi (misspelling) in which the target character is spelled incorrectly, and biezi (alternative spelling) where another character (which itself is spelled correctly) is substituted for the target character (Shen & Bear, 2000). According to our framework, biezi is annotated as an error at the whole-character level, while cuozi could be subsumed further into various sub-types according to the sub-character constituent that is attributed to the error, which are summarized in Table 2.{% endblocktrans %}
+                    </p>
+                </div>
+            </div>
+            <!-- Table 2 -->
+            <div class="table-2">
+                <p class="text-center">{% blocktrans %}Table 2. Types of character-writing error of Chinese (Liang, 2021){% endblocktrans %}</p>
+                <table class="">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">
+                                <span>{% trans 'Error Type' %}</span>
+                                <span class="text-left">{% trans 'Levels' %}</span>
+                            </th>
+                            <th>
+                                <span>{% trans 'Insertion' %}</span>
+                                <hr>
+                                <span>T/R</span>
+                            </th>
+                            <th>
+                                <span>{% trans 'Deletion' %}</span>
+                                <hr>
+                                <span>T/R</span>
+                            </th>
+                            <th>
+                                <span>{% trans 'Substitution' %}</span>
+                                <hr>
+                                <span>T/R</span>
+                            </th>
+                            <th>
+                                <span>{% trans 'Transposition' %}</span>
+                                <hr>
+                                <span>T/R</span>
+                            </th>
+                            <th>
+                                <span>{% trans 'Orientation' %}</span>
+                                <hr>
+                                <span>T/R</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-left">{% trans 'Stroke' %}</td>
+                            <td>纹/<img style="width:35px; height: 20px; display: inline-block" src="https://d1g3ayfrf0i21j.cloudfront.net/media/char7.png"></td>
+                            <td>浪/<img style="width:35px; height: 20px; display: inline-block" src="https://d1g3ayfrf0i21j.cloudfront.net/media/char8.png"></td>
+                            <td>球/<img style="width:35px; height: 20px; display: inline-block" src="https://d1g3ayfrf0i21j.cloudfront.net/media/char9.png"></td>
+                            <td>群/<img style="width:35px; height: 20px; display: inline-block" src="https://d1g3ayfrf0i21j.cloudfront.net/media/char10.png"></td>
+                            <td>球/<img style="width:35px; height: 20px; display: inline-block" src="https://d1g3ayfrf0i21j.cloudfront.net/media/char11.png"></td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">{% trans 'Logographeme' %}</td>
+                            <td>盯/<img style="width:35px; height: 20px; display: inline-block" src="https://d1g3ayfrf0i21j.cloudfront.net/media/char12.png"></td>
+                            <td>鲨/<img style="width:35px; height: 20px; display: inline-block" src="https://d1g3ayfrf0i21j.cloudfront.net/media/char13.png"></td>
+                            <td>空/<img style="width:35px; height: 20px; display: inline-block" src="https://d1g3ayfrf0i21j.cloudfront.net/media/char14.png"></td>
+                            <td>蝴/<img style="width:35px; height: 20px; display: inline-block" src="https://d1g3ayfrf0i21j.cloudfront.net/media/char15.png"></td>
+                            <td>终/<img style="width:35px; height: 20px; display: inline-block" src="https://d1g3ayfrf0i21j.cloudfront.net/media/char16.png"></td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">{% trans 'Radical' %}</td>
+                            <td></td>
+                            <td>砖/<img style="width:35px; height: 20px; display: inline-block" src="https://d1g3ayfrf0i21j.cloudfront.net/media/char17.png"></td>
+                            <td>浪/<img style="width:35px; height: 20px; display: inline-block" src="https://d1g3ayfrf0i21j.cloudfront.net/media/char18.png"></td>
+                            <td>项/<img style="width:35px; height: 20px; display: inline-block" src="https://d1g3ayfrf0i21j.cloudfront.net/media/char19.png"></td>
+                            <td>髦/<img style="width:35px; height: 20px; display: inline-block" src="https://d1g3ayfrf0i21j.cloudfront.net/media/char20.png"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="paragraph">
+                    <p class="text-center">{% blocktrans %}Note: T= target character; R = Response (the error form){% endblocktrans %}</p>
+                    <p class="mt-3">{% blocktrans %}We welcome researchers and educators to try this corpus and provide valuable suggestions [email: ****] so that we can improve the system.{% endblocktrans %}</p>
+                </div>
+            </div>
+
+            <!-- Acknowledgements -->
+            <div class="description mt-6">{% trans 'Acknowledgements' %}</div>
+            <div class="paragraph">
+                <p class="mt-3">
+                    {% blocktrans %}The construction of the corpus was supported by the grants from the Education University of Hong Kong (Project title: Improving and enriching the practice of teaching Chinese characters for CSL teachers in Vietnam, PI: Dr LIANG Yuan. Project title: Constructing a CSL Learner Corpus for Character-writing Error, PI: Dr LIANG Yuan) and partially from the Research Grants Council of the Hong Kong Special administrative Region (Project title: Uncovering Relationship between Strategy Use and Chinese Character Writing Performance among L2 Learners in Local and Foreign Contexts: A Cross-lagged panel Analysis, PI: Dr LIANG Yuan).{% endblocktrans %}
+                </p>
+                <p class="mt-3">
+                    {% blocktrans %}Our research group consists of the following members: Dr Patrick CHU, Ms Mei FANG, Ms Aiding HAN, Dr Zhe WU, Dr Eva YE, Ms Yanhua ZHANG.{% endblocktrans %}
+                </p>
+                <p class="mt-3">
+                    {% blocktrans %}We thank Ms Elaine Wang and Ms Xiaolin WU for the designing the logo of the corpus.{% endblocktrans %}
+                </p>
+            </div>
+
+            <!-- References -->
+            <div class="description mt-3">
+                {% trans 'References' %}
+            </div>
+            <div class="paragraph mt-2">
+                <p>
+                    {% blocktrans %}Ke, C. 1996. An empirical study on the relationship between Chinese character recognition and production. The Modern Language Journal, 80(3): 340-349.<br>
+                    Lau, D.KY. 2020. Validation of constituent logographemes and radicals in Chinese characters using handwriting data. Behavior Research Methods, 52, 305–316.<br>
+                    Leung, M. 2009. The writing development of primary school students and an improved way of marking writing-to-dictation exercise. （EDB/QEF 2005 /0309）. Report submitted to QEF, HK government.<br>
+                    Liang, Y. 2019. 從書寫偏誤看漢語二語學習者的漢字習得 (Acquisition of Chinese characters: The error analysis of writing among nonnative learners).《語言教學與研究》(Language Teaching and Linguistic Studies), 4, 33-44.<br>
+                    Liang, Y. 2021. 漢字在漢語教學中的地位——理論、實踐與示例 (The Position of Chinese Characters in Chinese Teaching: Theory, Practice and Examples). Invited talk. Research Institute of International Chinese Language Education, Beijing Language and Cultrue University. 25 May.<br>
+                    Shen, H., & D. Bear. 2000. Development of orthographic skills in Chinese children. Reading and Writing, 13, 197-236.<br>
+                    Shu, H., & R. Anderson. 1997. Role of radical awareness in the character and word acquisition of Chinese children. Reading Research Quarterly, 31(1), 78-89.<br>{% endblocktrans %}
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

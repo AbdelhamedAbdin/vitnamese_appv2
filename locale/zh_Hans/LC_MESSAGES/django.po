@@ -1,0 +1,405 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-08 20:14+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: intro/templates/intro/intro.html:9
+msgid "The Learner Corpus of Chinese-character-handwriting Error"
+msgstr "二語學習者漢字書寫錯誤語料庫"
+
+#: intro/templates/intro/intro.html:12
+msgid "Corpus Description"
+msgstr "語料庫簡介"
+
+#: intro/templates/intro/intro.html:14
+msgid ""
+"Chinese-character-handwriting (CCW) has been acknowledged as the most "
+"challenging aspect of Chinese literacy due to the special properties of "
+"Chinese logography. Students who learn Chinese as a second language (CSL) "
+"usually lag in and get intimidated by learning CCW (Ke, 1996). To deepen the "
+"understanding of what difficulties CSL students face and how they learn CCW "
+"within different L1 language backgrounds, and further provide pedagogical "
+"benefit that are based on first-hand authentic materials, we set to "
+"construct a learner corpus of CCW error and make it reachable as an online "
+"resource for researchers and educators."
+msgstr ""
+"由於漢字的特殊性質，漢字書寫（手寫）被認為是漢字書面能力中最具挑戰性的一環。"
+"漢語二語學習者通常會在漢字書寫方面滯後，甚至對書寫產生恐懼（Ke, 1996）。為了"
+"加深理解二語學習者面臨的困難，以及在不同母語背景下如何學習漢字書寫，同時為課"
+"程教學設計提供第一手真實材料，我們建立二語學習者的漢語書寫錯誤語料庫，為研究"
+"人員和教育工作者提供在線資源。"
+
+#: intro/templates/intro/intro.html:15
+msgid ""
+"The learner corpus of CCW error is compiled by two sets of data. The first "
+"set was collected through a writing-to-dictation test of Chinese simplified "
+"characters by *** Vietnam university students who are majoring in Chinese. "
+"The second set was collected via a delayed copying of ** Chinese concrete "
+"words (traditional characters) by *** NCS non-Chinese-speaker (NCS) students "
+"in Hong Kong."
+msgstr ""
+"本語料庫包括兩組數據。第一組數據通過簡體漢字的聽寫測試而收集，參與測試對象是"
+"***越南大學中文專業的成年學生。第二組數據透過繁體漢字的延遲抄寫而收集，參與對"
+"象是香港***非華語學生。"
+
+#: intro/templates/intro/intro.html:16
+#, python-format
+msgid ""
+"The tag-set for error-annotation is conducted within a framework called the "
+"four-level composition of Chinese characters (Leung, 2009; Liang, 2019). "
+"According to this framework, character is the basic unit of Chinese "
+"handwriting. Three tiers of sub-character constituents are involved in the "
+"composition of characters (Table 1). Strokes are the smallest constituents "
+"rendered when a pen touches and leaves a paper. Radicals refer to phonetic "
+"or semantic radicals which give clues to sound or meaning of the compound, "
+"the major group of Chinese characters (over 80%% (Shu & Anderson, 1997)). "
+"Logographemes are composed by strokes directly and recur consistently and "
+"independently as integral constituents in radicals or characters (Lau, 2020)."
+msgstr ""
+"書寫錯誤依據漢字四級組成框架進行分析（Leung, 2009；梁源，2019）。該框架將漢字"
+"視作漢語書寫的基本單位。漢字內部組成包含三層結構成分（表1）。筆畫指筆觸碰到離"
+"開紙張時呈現的最小點或線；偏旁指能對合體字的音或義提供線索的聲旁或形旁（這些"
+"合體形聲字所佔比例超過80%%（Shu & Anderson, 1997））；部件由2個以上筆畫構成，"
+"可重複使用來構成偏旁或漢字（Lau, 2020）。"
+
+#: intro/templates/intro/intro.html:20
+msgid "Table 1. Grain sizes of orthographic units in Chinese (Liang, 2019)"
+msgstr "表1、漢字四級組成框架（梁源，2019)"
+
+#: intro/templates/intro/intro.html:24
+msgid "Whole-character"
+msgstr "汉字"
+
+#: intro/templates/intro/intro.html:33 intro/templates/intro/intro.html:116
+msgid "Radical"
+msgstr "偏旁"
+
+#: intro/templates/intro/intro.html:40 intro/templates/intro/intro.html:108
+msgid "Logographeme"
+msgstr "部件"
+
+#: intro/templates/intro/intro.html:47 intro/templates/intro/intro.html:100
+msgid "Stroke"
+msgstr "筆畫"
+
+#: intro/templates/intro/intro.html:57
+msgid ""
+"CCW errors traditionally have been divided into two kinds: cuozi "
+"(misspelling) in which the target character is spelled incorrectly, and "
+"biezi (alternative spelling) where another character (which itself is "
+"spelled correctly) is substituted for the target character (Shen & Bear, "
+"2000). According to our framework, biezi is annotated as an error at the "
+"whole-character level, while cuozi could be subsumed further into various "
+"sub-types according to the sub-character constituent that is attributed to "
+"the error, which are summarized in Table 2."
+msgstr ""
+"傳統上，漢字書寫錯誤往往分為兩種：錯字（即不合法或不存在的漢字）和別字（用另"
+"一個漢字替換了目標漢字）（Shen&Bear, 2000）。根據四級組成框架，「別字」屬於整"
+"字層面的替換錯誤，而「錯字」則可以根據導致錯誤的結構成分進一步歸類，如表2所"
+"示。"
+
+#: intro/templates/intro/intro.html:63
+msgid "Table 2. Types of character-writing error of Chinese (Liang, 2021)"
+msgstr "表2.漢字書寫錯誤類型（梁源, 2021）"
+
+#: intro/templates/intro/intro.html:68
+#: student_grade/templates/student_grade/error_response_view.html:132
+msgid "Error Type"
+msgstr "错字类型"
+
+#: intro/templates/intro/intro.html:69
+msgid "Levels"
+msgstr "層級"
+
+#: intro/templates/intro/intro.html:72
+msgid "Insertion"
+msgstr "增加"
+
+#: intro/templates/intro/intro.html:77
+msgid "Deletion"
+msgstr "刪減"
+
+#: intro/templates/intro/intro.html:82
+msgid "Substitution"
+msgstr "替換"
+
+#: intro/templates/intro/intro.html:87
+msgid "Transposition"
+msgstr "位移"
+
+#: intro/templates/intro/intro.html:92
+msgid "Orientation"
+msgstr "方向改變"
+
+#: intro/templates/intro/intro.html:126
+msgid "Note: T= target character; R = Response (the error form)"
+msgstr "注：T=目標漢字；R=錯字（錯誤形式）"
+
+#: intro/templates/intro/intro.html:127
+msgid ""
+"We welcome researchers and educators to try this corpus and provide valuable "
+"suggestions [email: ****] so that we can improve the system."
+msgstr ""
+"我們歡迎各位專家和教育工作者試使用這個語料庫，並提供寶貴意見[email：****]，讓"
+"我們可以改良系統。"
+
+#: intro/templates/intro/intro.html:132
+msgid "Acknowledgements"
+msgstr "致謝"
+
+#: intro/templates/intro/intro.html:135
+msgid ""
+"The construction of the corpus was supported by the grants from the "
+"Education University of Hong Kong (Project title: Improving and enriching "
+"the practice of teaching Chinese characters for CSL teachers in Vietnam, PI: "
+"Dr LIANG Yuan. Project title: Constructing a CSL Learner Corpus for "
+"Character-writing Error, PI: Dr LIANG Yuan) and partially from the Research "
+"Grants Council of the Hong Kong Special administrative Region (Project "
+"title: Uncovering Relationship between Strategy Use and Chinese Character "
+"Writing Performance among L2 Learners in Local and Foreign Contexts: A Cross-"
+"lagged panel Analysis, PI: Dr LIANG Yuan)."
+msgstr ""
+"本語料庫項目得到香港教育大學研究基金資助（Project title: Improving and "
+"enriching the practice of teaching Chinese characters for CSL teachers in "
+"Vietnam, PI: Dr LIANG Yuan. Project title: Constructing a CSL Learner Corpus "
+"for Character-writing Error, PI: Dr LIANG Yuan），還得到香港特別行政區研究資"
+"助局優配研究金項目的部分資助（項目名稱：本地與外國語境中二語學習者策略使用與"
+"漢字書寫表現的關係：延宕交叉分析，項目支出人：梁源博士）。"
+
+#: intro/templates/intro/intro.html:138
+msgid ""
+"Our research group consists of the following members: Dr Patrick CHU, Ms Mei "
+"FANG, Ms Aiding HAN, Dr Zhe WU, Dr Eva YE, Ms Yanhua ZHANG."
+msgstr ""
+"開發團隊成员包括：CHU Patrick博士、方玫小姐、韓愛丁小姐、吳喆博士、葉麗靜博"
+"士、張燕華女士"
+
+#: intro/templates/intro/intro.html:141
+msgid ""
+"We thank Ms Elaine Wang and Ms Xiaolin WU for the designing the logo of the "
+"corpus."
+msgstr "感谢王意小姐和吳曉琳小姐為語料庫設計了標識。"
+
+#: intro/templates/intro/intro.html:147
+msgid "References"
+msgstr "參考文獻"
+
+#: intro/templates/intro/intro.html:151
+msgid ""
+"Ke, C. 1996. An empirical study on the relationship between Chinese "
+"character recognition and production. The Modern Language Journal, 80(3): "
+"340-349.<br>\n"
+"                    Lau, D.KY. 2020. Validation of constituent logographemes "
+"and radicals in Chinese characters using handwriting data. Behavior Research "
+"Methods, 52, 305–316.<br>\n"
+"                    Leung, M. 2009. The writing development of primary "
+"school students and an improved way of marking writing-to-dictation "
+"exercise. （EDB/QEF 2005 /0309）. Report submitted to QEF, HK government."
+"<br>\n"
+"                    Liang, Y. 2019. 從書寫偏誤看漢語二語學習者的漢字習得 "
+"(Acquisition of Chinese characters: The error analysis of writing among "
+"nonnative learners).《語言教學與研究》(Language Teaching and Linguistic "
+"Studies), 4, 33-44.<br>\n"
+"                    Liang, Y. 2021. 漢字在漢語教學中的地位——理論、實踐與示例 "
+"(The Position of Chinese Characters in Chinese Teaching: Theory, Practice "
+"and Examples). Invited talk. Research Institute of International Chinese "
+"Language Education, Beijing Language and Cultrue University. 25 May.<br>\n"
+"                    Shen, H., & D. Bear. 2000. Development of orthographic "
+"skills in Chinese children. Reading and Writing, 13, 197-236.<br>\n"
+"                    Shu, H., & R. Anderson. 1997. Role of radical awareness "
+"in the character and word acquisition of Chinese children. Reading Research "
+"Quarterly, 31(1), 78-89.<br>"
+msgstr ""
+"Ke, C. 1996. An empirical study on the relationship between Chinese "
+"character recognition and production. The Modern Language Journal, 80(3): "
+"340-349.Lau, D.KY. 2020. Validation of constituent logographemes and "
+"radicals in Chinese characters using handwriting data. Behavior Research "
+"Methods, 52, 305–316.Leung, M. 2009. The writing development of primary "
+"school students and an improved way of marking writing-to-dictation "
+"exercise. （EDB/QEF 2005 /0309）. Report submitted to QEF, HK government.梁"
+"源. 2019. 從書寫偏誤看漢語二語學習者的漢字習得，《語言教學與研究》，第4期，"
+"33-44頁.梁源. 2021. 漢字在漢語教學中的地位——理論、實踐與示例，特邀報告，北京"
+"語言大學漢語國際教育研究院，5月25日.Shen, H., & D. Bear. 2000. Development "
+"of orthographic skills in Chinese children. Reading and Writing, 13, 197-236."
+"Shu, H., & R. Anderson. 1997. Role of radical awareness in the character and "
+"word acquisition of Chinese children. Reading Research Quarterly, 31(1), "
+"78-89."
+
+#: student_grade/graphs/bar_chart.py:151
+msgid "Percentages"
+msgstr "百分比"
+
+#: student_grade/graphs/bar_chart.py:160 student_grade/graphs/pie_chart.py:71
+msgid "Correct"
+msgstr "正確"
+
+#: student_grade/graphs/bar_chart.py:162 student_grade/graphs/pie_chart.py:73
+msgid "Incorrect"
+msgstr "錯誤"
+
+#: student_grade/graphs/bar_chart.py:164 student_grade/graphs/pie_chart.py:75
+msgid "Blank"
+msgstr "沒有回答"
+
+#: student_grade/graphs/bar_chart.py:198
+msgid "Distribution by Gender"
+msgstr "性别分佈"
+
+#: student_grade/graphs/bar_chart.py:198
+#: student_grade/templates/student_grade/accuracy_response_view.html:77
+#: student_grade/templates/student_grade/datatables/datatable.html:26
+#: student_grade/templates/student_grade/error_response_view.html:23
+#: student_grade/templates/student_grade/filter.html:57
+msgid "Gender"
+msgstr "性别"
+
+#: student_grade/graphs/bar_chart.py:206
+msgid "Distribution by Grade"
+msgstr "年级分佈"
+
+#: student_grade/graphs/bar_chart.py:206
+#: student_grade/templates/student_grade/accuracy_response_view.html:67
+#: student_grade/templates/student_grade/datatables/datatable.html:23
+#: student_grade/templates/student_grade/error_response_view.html:28
+#: student_grade/templates/student_grade/filter.html:47
+msgid "Grade"
+msgstr "年级"
+
+#: student_grade/graphs/bar_chart.py:214
+msgid "Distribution by Regularity"
+msgstr "规则性分佈"
+
+#: student_grade/graphs/bar_chart.py:214
+#: student_grade/templates/student_grade/accuracy_response_view.html:41
+#: student_grade/templates/student_grade/datatables/datatable.html:17
+#: student_grade/templates/student_grade/error_response_view.html:34
+#: student_grade/templates/student_grade/filter.html:21
+msgid "Regularity"
+msgstr "规则性"
+
+#: student_grade/graphs/bar_chart.py:222
+msgid "Distribution by Complexity"
+msgstr "复杂性分佈"
+
+#: student_grade/graphs/bar_chart.py:222
+#: student_grade/templates/student_grade/accuracy_response_view.html:51
+#: student_grade/templates/student_grade/datatables/datatable.html:20
+#: student_grade/templates/student_grade/error_response_view.html:41
+#: student_grade/templates/student_grade/filter.html:31
+msgid "Complexity"
+msgstr "复杂性"
+
+#: student_grade/templates/base.html:35
+msgid "Accuracy analysis"
+msgstr "正確率"
+
+#: student_grade/templates/base.html:41
+msgid "Error analysis"
+msgstr "錯誤類別"
+
+#: student_grade/templates/student_grade/accuracy_response_view.html:28
+#: student_grade/templates/student_grade/accuracy_response_view.html:31
+#: student_grade/templates/student_grade/datatables/datatable.html:11
+#: student_grade/templates/student_grade/filter.html:8
+#: student_grade/templates/student_grade/filter.html:11
+msgid "Character"
+msgstr "汉字"
+
+#: student_grade/templates/student_grade/accuracy_response_view.html:33
+#: student_grade/templates/student_grade/accuracy_response_view.html:43
+#: student_grade/templates/student_grade/accuracy_response_view.html:53
+#: student_grade/templates/student_grade/accuracy_response_view.html:69
+#: student_grade/templates/student_grade/accuracy_response_view.html:79
+#: student_grade/templates/student_grade/filter.html:13
+#: student_grade/templates/student_grade/filter.html:23
+#: student_grade/templates/student_grade/filter.html:33
+#: student_grade/templates/student_grade/filter.html:49
+#: student_grade/templates/student_grade/filter.html:59
+#: student_grade/templates/student_grade/filter.html:75
+#: student_grade/templates/student_grade/filter.html:86
+#: student_grade/templates/student_grade/filter.html:97
+#: student_grade/templates/student_grade/filter.html:108
+msgid "any"
+msgstr "全部"
+
+#: student_grade/templates/student_grade/accuracy_response_view.html:64
+#: student_grade/templates/student_grade/datatables/datatable.html:8
+#: student_grade/templates/student_grade/filter.html:44
+msgid "Student"
+msgstr "学生编号"
+
+#: student_grade/templates/student_grade/datatables/complexity_table.html:6
+#: student_grade/templates/student_grade/datatables/datatable.html:32
+#: student_grade/templates/student_grade/datatables/gender_table.html:6
+#: student_grade/templates/student_grade/datatables/grade_table.html:7
+#: student_grade/templates/student_grade/datatables/regularity_table.html:6
+#: student_grade/templates/student_grade/filter.html:84
+msgid "Error number"
+msgstr "错误数目"
+
+#: student_grade/templates/student_grade/datatables/datatable.html:14
+msgid "Mirror image"
+msgstr "镜像"
+
+#: student_grade/templates/student_grade/datatables/datatable.html:29
+#: student_grade/templates/student_grade/filter.html:73
+msgid "Error class"
+msgstr "錯誤類別"
+
+#: student_grade/templates/student_grade/datatables/datatable.html:35
+#: student_grade/templates/student_grade/filter.html:95
+msgid "Error unit"
+msgstr "错误单位"
+
+#: student_grade/templates/student_grade/datatables/datatable.html:37
+#: student_grade/templates/student_grade/filter.html:106
+msgid "Error type"
+msgstr "错字类型"
+
+#: student_grade/templates/student_grade/error_response_view.html:19
+#: student_grade/views.py:184 student_grade/views.py:392
+msgid "Overall Distribution"
+msgstr "總體分佈"
+
+#: student_grade/templates/student_grade/error_response_view.html:124
+msgid "Error Class"
+msgstr "錯誤類別"
+
+#: student_grade/templates/student_grade/error_response_view.html:128
+msgid "Error Unit"
+msgstr "错误单位"
+
+#: student_grade/templates/student_grade/filter.html:70
+msgid "Error Answer"
+msgstr "错误答案"
+
+#: student_grade/views.py:498
+msgid "Error Class Distribution"
+msgstr "错误类别分布"
+
+#: student_grade/views.py:508
+msgid "Error Unit Distribution"
+msgstr "误差单位分布"
+
+#: student_grade/views.py:518
+msgid "Error Type Distribution"
+msgstr "错误类型分布"
+
+#: website/settings.py:140
+msgid "Simplified Chinese"
+msgstr "简体中文"
