@@ -1,0 +1,13 @@
+[Unit]
+Description=uWSGI instance to serve projectalfa
+After=network.target
+
+[Service]
+User=root
+Group=www-data
+WorkingDirectory=/home/eduhkchi/
+Environment="PATH=/home/eduhkchi/envp/bin"
+ExecStart=/home/eduhkchi/envp/bin/uwsgi --ini projectalfa.ini
+
+[Install]
+WantedBy=multi-user.target
