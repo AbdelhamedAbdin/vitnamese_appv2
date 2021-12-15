@@ -87,14 +87,14 @@ WSGI_APPLICATION = 'website.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'default3': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'eduhkchi',
         'USER': 'root',
         'PASSWORD': 'Tswnt31!',
         'HOST': 'localhost'
     },
-    'devversion': {
+    'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'demo',
         'USER': 'root',
