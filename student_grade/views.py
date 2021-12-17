@@ -4,14 +4,13 @@ from django.core.paginator import Paginator
 from .custom_decorators import decoratorDirect, decoratorDirectError
 from student_grade.graphs import pie_chart as custom_pie
 from student_grade.graphs import bar_chart as custom_bar
-from django.http import JsonResponse, HttpResponseRedirect
+from django.http import JsonResponse
 from django.utils.safestring import SafeString
 from django.utils import translation
 from django.conf import settings
+from django.http import HttpResponseRedirect
 from django.utils.translation import ugettext as _
 import re
-from django.urls import reverse
-from django.shortcuts import redirect
 
 
 def current_view(request):
@@ -47,15 +46,10 @@ def translation_page(request):
 
 
 def trans(request):
-    # get language or set the default one if it wasn't exist
-    if request.COOKIES.get('language'):
-        # scheme = request.scheme
-        # host = request.META.get('HTTP_HOST')
-
+    try:
         current_lang = request.COOKIES.get('language').replace("-", "_")
-    else:
+    except:
         current_lang = settings.LANGUAGE_CODE
-        current_lang = request.COOKIES.setdefault('language', current_lang)
     return current_lang
 
 
@@ -63,7 +57,7 @@ def remove_trailer_character(request):
     specific_char = Student.objects.values_list('gender_'+trans(request), flat=True).distinct()[2]
     return specific_char
 
-from django.urls import resolve
+
 @decoratorDirect
 def accuracy_analysis(request):
     characters = Character.objects.all().distinct()
@@ -168,42 +162,36 @@ def accuracy_analysis(request):
         prev_url = ''
 
     current_lang = trans(request)
-    try:
-        context = {
-            'all_response': all_response,
-            'responses': responses,
-            'students': students,
-            'next_url': next_url,
-            'prev_url': prev_url,
-            'characters': characters,
-            'regularity': regularity,
-            'char': char,
-            'reg': reg,
-            'complex': complex,
-            'CHARACTER_COMPLEX': CHARACTER_COMPLEX,
-            'STUDENT_GENDER': STUDENT_GENDER,
-            'STUDENT_GRADE': STUDENT_GRADE,
-            'grade': grade,
-            'gender': gender,
-            'rem': rem,
-            'character_req': character_req,
-            'pie_graph': custom_pie.PieChart(current_lang, _('Overall Distribution'), resp).pie_structure('correct'),
-            'gender_group': custom_bar.BarChart(current_lang, '', resp, 'correct').gender_group(),
-            'grade_group': custom_bar.BarChart(current_lang, '', resp, 'correct').grade_group(),
-            'regular_group': custom_bar.BarChart(current_lang, '', resp, 'correct').regular_group(),
-            'complex_group': custom_bar.BarChart(current_lang, '', resp, 'correct').complex_group()
-        }
-    except ZeroDivisionError:
-        return redirect('student_grade:accuracy_analysis')
+
+    context = {
+        'all_response': all_response,
+        'responses': responses,
+        'students': students,
+        'next_url': next_url,
+        'prev_url': prev_url,
+        'characters': characters,
+        'regularity': regularity,
+        'char': char,
+        'reg': reg,
+        'complex': complex,
+        'CHARACTER_COMPLEX': CHARACTER_COMPLEX,
+        'STUDENT_GENDER': STUDENT_GENDER,
+        'STUDENT_GRADE': STUDENT_GRADE,
+        'grade': grade,
+        'gender': gender,
+        'rem': rem,
+        'character_req': character_req,
+        'pie_graph': custom_pie.PieChart(current_lang, _('Overall Distribution'), resp).pie_structure('correct'),
+        'gender_group': custom_bar.BarChart(current_lang, '', resp, 'correct').gender_group(),
+        'grade_group': custom_bar.BarChart(current_lang, '', resp, 'correct').grade_group(),
+        'regular_group': custom_bar.BarChart(current_lang, '', resp, 'correct').regular_group(),
+        'complex_group': custom_bar.BarChart(current_lang, '', resp, 'correct').complex_group()
+    }
     return render(request, 'student_grade/accuracy_response_view.html', context)
 
 
 @decoratorDirectError
 def error_analysis(request):
-    path_info = request.META.get('PATH_INFO').split("/")[1:]
-    if path_info[0] != request.COOKIES.get('language') and path_info[0] == settings.LANGUAGE_CODE:
-        return redirect(reverse('student_grade:accuracy_analysis'))
-
     characters = Character.objects.all().distinct()
     students = Student.objects.all().distinct()
     responses = Response.objects.all().distinct()
@@ -362,41 +350,42 @@ def error_analysis(request):
     pick_specific_error_sec = list(filter(lambda v: v is not None, list(
         Response.objects.all().values_list('error_number_' + trans(request), flat=True).distinct())))[0]
     error_number_unique = resp.exclude(error_number__isnull=True).values_list('error_number', flat=True).distinct()
-    try:
-        context = {
-            'all_response': all_response,
-            'responses': responses,
-            'students': students,
-            'next_url': next_url,
-            'prev_url': prev_url,
-            'characters': characters,
-            'error_class': error_class,
-            'error_number': error_number,
-            'error_unit': error_unit,
-            'error_type': error_type,
-            'regularity': regularity,
-            'STUDENT_GENDER': STUDENT_GENDER,
-            'STUDENT_GRADE': STUDENT_GRADE,
-            'CHARACTER_COMPLEX': CHARACTER_COMPLEX,
-            'CHARACTER_REGULAR': CHARACTER_REGULAR,
-            'char': char,
-            'reg': reg,
-            'complex': complex,
-            'grade': grade,
-            'gender': gender,
-            'correct': correct,
-            'err_class': err_class,
-            'err_unit': err_unit,
-            'err_number': err_number,
-            'err_type': err_type,
-            'rem': rem,
-            'character_req': character_req,
-            'pick_specific_error': pick_specific_error,
-            'pick_specific_error_sec': pick_specific_error_sec,
-            'error_number_unique': error_number_unique
-        }
-    except ZeroDivisionError:
-        return redirect('student_grade:error_analysis')
+
+    context = {
+        'all_response': all_response,
+        'responses': responses,
+        'students': students,
+        'next_url': next_url,
+        'prev_url': prev_url,
+        'characters': characters,
+        'error_class': error_class,
+        'error_number': error_number,
+        'error_unit': error_unit,
+        'error_type': error_type,
+        'regularity': regularity,
+        'STUDENT_GENDER': STUDENT_GENDER,
+        'STUDENT_GRADE': STUDENT_GRADE,
+        'CHARACTER_COMPLEX': CHARACTER_COMPLEX,
+        'CHARACTER_REGULAR': CHARACTER_REGULAR,
+        'char': char,
+        'reg': reg,
+        'complex': complex,
+        'grade': grade,
+        'gender': gender,
+        'correct': correct,
+        'err_class': err_class,
+        'err_unit': err_unit,
+        'err_number': err_number,
+        'err_type': err_type,
+        'rem': rem,
+        'character_req': character_req,
+        'pick_specific_error': pick_specific_error,
+        'pick_specific_error_sec': pick_specific_error_sec,
+        'error_number_unique': error_number_unique
+    }
+
+    from django.urls import reverse
+    from django.shortcuts import redirect
 
     # set context data based on particular character => "单一"
     if err_number != pick_specific_error:
