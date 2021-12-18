@@ -22,23 +22,28 @@ class BarChart(MainStructure):
         gender_type = []
         if self.filter_type == "correct":
             for gender in self.objects.exclude(student__gender=self.remove_tail_character()).values('student__gender_%s'%self.request_cookie).annotate(count=Count('student__gender_%s'%self.request_cookie)):
-                gender_type.append((self.objects.exclude(student__gender=self.remove_tail_character()).filter(student__gender=gender['student__gender_%s'%self.request_cookie]).filter(correct=num_or_obj).count() / gender['count']) * 100)
+                if gender.get('student__gender_en',0) != None:
+                    gender_type.append((self.objects.exclude(student__gender=self.remove_tail_character()).filter(student__gender=gender['student__gender_%s'%self.request_cookie]).filter(correct=num_or_obj).count() / gender['count']) * 100)
 
         elif self.filter_type == "error_number":
             for gender in self.objects.exclude(student__gender=self.remove_tail_character()).values('student__gender_%s'%self.request_cookie).annotate(count=Count('student__gender_%s'%self.request_cookie)):
-                gender_type.append((self.objects.exclude(student__gender=self.remove_tail_character()).filter(student__gender=gender['student__gender_%s'%self.request_cookie]).filter(error_number=num_or_obj).count() / gender['count']) * 100)
+                if gender.get('student__gender_en',0) != None:
+                    gender_type.append((self.objects.exclude(student__gender=self.remove_tail_character()).filter(student__gender=gender['student__gender_%s'%self.request_cookie]).filter(error_number=num_or_obj).count() / gender['count']) * 100)
 
         elif self.filter_type == "error_class":
             for gender in self.objects.exclude(student__gender=self.remove_tail_character()).values('student__gender_%s'%self.request_cookie).annotate(count=Count('student__gender_%s'%self.request_cookie)):
-                gender_type.append((self.objects.exclude(student__gender=self.remove_tail_character()).filter(student__gender=gender['student__gender_%s'%self.request_cookie]).filter(error_class=num_or_obj).count() / gender['count']) * 100)
+                if gender.get('student__gender_en',0) != None:
+                    gender_type.append((self.objects.exclude(student__gender=self.remove_tail_character()).filter(student__gender=gender['student__gender_%s'%self.request_cookie]).filter(error_class=num_or_obj).count() / gender['count']) * 100)
 
         elif self.filter_type == "error_unit":
             for gender in self.objects.exclude(student__gender=self.remove_tail_character()).values('student__gender_%s'%self.request_cookie).annotate(count=Count('student__gender_%s'%self.request_cookie)):
-                gender_type.append((self.objects.exclude(student__gender=self.remove_tail_character()).filter(student__gender=gender['student__gender_%s'%self.request_cookie]).filter(error_unit=num_or_obj).count() / gender['count']) * 100)
+                if gender.get('student__gender_en',0) != None:
+                    gender_type.append((self.objects.exclude(student__gender=self.remove_tail_character()).filter(student__gender=gender['student__gender_%s'%self.request_cookie]).filter(error_unit=num_or_obj).count() / gender['count']) * 100)
 
         elif self.filter_type == "error_type":
             for gender in self.objects.exclude(student__gender=self.remove_tail_character()).values('student__gender_%s'%self.request_cookie).annotate(count=Count('student__gender_%s'%self.request_cookie)):
-                gender_type.append((self.objects.exclude(student__gender=self.remove_tail_character()).filter(student__gender=gender['student__gender_%s'%self.request_cookie]).filter(error_type=num_or_obj).count() / gender['count']) * 100)
+                if gender.get('student__gender_en',0) != None:
+                    gender_type.append((self.objects.exclude(student__gender=self.remove_tail_character()).filter(student__gender=gender['student__gender_%s'%self.request_cookie]).filter(error_type=num_or_obj).count() / gender['count']) * 100)
         return gender_type
 
     def grade(self, num_or_obj):
