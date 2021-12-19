@@ -49,7 +49,11 @@ def trans(request):
     try:
         current_lang = request.COOKIES.get('language').replace("-", "_")
     except:
-        current_lang = settings.LANGUAGE_CODE
+        print("errror happend")
+        try:
+            current_lang = request.path.split("/")[1].replace("-","_")
+        except:
+            current_lang = settings.LANGUAGE_CODE
     return current_lang
 
 
