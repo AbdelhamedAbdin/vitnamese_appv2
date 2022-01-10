@@ -94,13 +94,20 @@ DATABASES = {
         'PASSWORD': 'Tswnt31!',
         'HOST': 'localhost'
     },
-    'default': {
+    'default2': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'demo',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost'
-    }
+    },
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'demo',
+        'USER': 'medoabdin',
+        'PASSWORD': 'medo_rko96',
+        'HOST': 'localhost'
+    },
 }
 
 
@@ -149,22 +156,22 @@ LANGUAGES = [
 ]
 
 
-# STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-# MEDIA_URL = '/media/'
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Change the Django static URL to the Django S3boto3storage
-AWS_LOCATION = 'media'
+# AWS_LOCATION = 'media'
 # Domain Name Distribution => https://d1g3ayfrf0i21j.cloudfront.net
 # AWS_S3_CUSTOM_DOMAIN = 'd1g3ayfrf0i21j.cloudfront.net'
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.us-east-2.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+# AWS_S3_CUSTOM_DOMAIN = '%s.s3.us-east-2.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 # STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
-STATICFILES_STORAGE = "website.storage_backends.StaticStorage"
-STATIC_LOCATION = 'static'
-STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
-]
+# STATICFILES_STORAGE = "website.storage_backends.StaticStorage"
+# STATIC_LOCATION = 'static'
+# STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static')
+# ]
 # MEDIA_URL = '//%s.s3.amazonaws.com/media/' % AWS_STORAGE_BUCKET_NAME
 # MEDIA_ROOT = MEDIA_URL

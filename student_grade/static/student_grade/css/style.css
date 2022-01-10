@@ -45,10 +45,16 @@ button.lang-button {
 }
 nav.navbar.navbar-expand-lg {
     background-image: url('https://d1g3ayfrf0i21j.cloudfront.net/media/Bannerv2.png');
-    height: 170px;
     background-repeat: round;
     background-blend-mode: overlay;
 }
+
+@media (min-width: 992px) {
+    nav.navbar.navbar-expand-lg {
+        height: 170px;
+    }
+}
+
 .nav-color {
     color: #FFF !important;
 }
@@ -226,3 +232,12 @@ button[name='language'] {
     font-size: 20px;
 }
 /* End Intro */
+/* Grade table */
+td.div-head img {
+    min-width: 110px;
+    min-height: 100px;
+    max-height: 100px;
+    margin-bottom: 2px;
+    margin-top: 2px;
+    padding: 3px
+}

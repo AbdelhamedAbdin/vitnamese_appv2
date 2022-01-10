@@ -22,49 +22,55 @@
 </head>
 <body>
     {% load static %}
-{#    <img src="https://d1g3ayfrf0i21j.cloudfront.net/media/Bannerv2.png">#}
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <button class="mt-6 navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="mt-6 collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item {% if request.path|splitter:"/"|length == 1 %}active{% endif %} nav-links">
-            <a class="nav-link" href="{% url 'student_grade:accuracy_analysis' %}">
-                {% trans 'Accuracy analysis' %}
-                <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item {% if 'error' in request.path|splitter:"/" %}active{% endif %} nav-links">
-            <a class="nav-link" href="{% url 'student_grade:error_analysis' %}">
-                {% trans 'Error analysis' %}
-                <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item {% if 'introduction' in request.path|splitter:"/" %}active{% endif %} nav-links">
-            <a class="nav-link" href="{% url 'intro:introduction' %}">
-{#                {% trans 'Error analysis' %}#}
-                  Introduction
-                <span class="sr-only">(current)</span>
-            </a>
-          </li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-            <form method="post" action="{% url 'student_grade:trans_func' %}">
-                {% csrf_token %}
-                {% get_available_languages as LANGUAGES %}
+        <div class="container">
+            <!-- button -->
+            <div class="navbar-header">
+                <button class="mt-6 navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
 
-                <li class="nav-item nav-links">
-                    {% for language in LANGUAGES %}
-                    <button name="language" value="{{ language.0 }}" type="submit" class="{% if LANGUAGE_CODE == language.0 %} nav-color {% endif %}nav-link lang-button">
-                        {{ language.0|language_name_local }}
-                    </button>
-                    {% endfor %}
-                </li>
-            </form>
-        </ul>
-      </div>
+            <!-- navbar collapsed data -->
+            <div class="mt-2 collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item {% if request.path|splitter:"/"|length == 1 %}active{% endif %} nav-links">
+                        <a class="nav-link" href="{% url 'student_grade:accuracy_analysis' %}">
+                        {% trans 'Accuracy analysis' %}
+                        <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item {% if 'error' in request.path|splitter:"/" %}active{% endif %} nav-links">
+                        <a class="nav-link" href="{% url 'student_grade:error_analysis' %}">
+                        {% trans 'Error analysis' %}
+                        <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item {% if 'introduction' in request.path|splitter:"/" %}active{% endif %} nav-links">
+                        <a class="nav-link" href="{% url 'intro:introduction' %}">
+                        {% trans 'Error analysis' %}
+                        Introduction
+                        <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <form method="post" action="{% url 'student_grade:trans_func' %}">
+                        {% csrf_token %}
+                        {% get_available_languages as LANGUAGES %}
+                        <li class="nav-item nav-links">
+                            {% for language in LANGUAGES %}
+                            <button name="language" value="{{ language.0 }}" type="submit" class="{% if LANGUAGE_CODE == language.0 %} nav-color {% endif %}nav-link lang-button">
+                                {{ language.0|language_name_local }}
+                            </button>
+                            {% endfor %}
+                        </li>
+                    </form>
+                </ul>
+            </div>
+        </div>
     </nav>
+
     {% block body %}
 
     {% endblock %}
