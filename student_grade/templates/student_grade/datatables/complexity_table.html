@@ -1,9 +1,29 @@
 {% load i18n %}
 {% load custom_filter %}
+<style>
+    td .div-head img {
+        min-width: 90%;
+        max-width: 90%;
+        min-height: 90px;
+        max-height: 90px;
+        margin-bottom: 2px;
+        margin-top: 2px;
+        padding: 3px
+    }
+    table thead th:not(:first-of-type) {
+        width: calc(100% / 2) !important;
+    }
+    @media (max-width: 576px) {
+        img {
+            width: 100px;
+            height: 50px;
+        }
+    }
+</style>
 <table class="table text-center table-bordered">
     <thead>
         <tr style="max-width: 100%">
-            <th scope="col" style="">{% trans 'Error number' %}</th>
+            <th scope="col" style="">{% trans 'Complexity' %}</th>
             {% for comp in CHARACTER_COMPLEX %}
                 <th scope="col">{{ comp }}</th>
             {% endfor %}
@@ -14,39 +34,35 @@
             {% for get_item in error_number_unique %}
                 {% if get_item is not None %}
                 <tr>
-                    <div class="col-lg-2">
-                        <td style="font-size: 16px">
-                            <div>{{ get_item }}</div>
-                        </td>
-                    </div>
-                    <div class="col-lg-5">
-                        <td class="div-head">
-                            {% for get_complex in resp|complex:get_item %}
-                                {% if get_complex.0 != '' %}
-                                    {% if get_complex.0 == CHARACTER_COMPLEX.0 %}
-                                    <div style="display: inline-block;position: relative" class="div-head col-sm-4 col-md-3">
-                                        <img data-pk="{{ get_complex.1 }}" class="img-thumbnail rounded data-tooltip" style="max-width: 100%" src="https://d1g3ayfrf0i21j.cloudfront.net/media/{{ get_complex.2 }}">
-                                        <div class="custom-tooltip"></div>
-                                    </div>
-                                    {% endif %}
+                    <td style="font-size: 16px">
+                        <div>{{ get_item }}</div>
+                    </td>
+
+                    <td class="">
+                        {% for get_complex in resp|complex:get_item %}
+                            {% if get_complex.0 != '' %}
+                                {% if get_complex.0 == CHARACTER_COMPLEX.0 %}
+                                <div style="display: inline-block;position: relative" class="div-head col-sm-6 col-md-3">
+                                    <img data-pk="{{ get_complex.1 }}" class="mt-2 img-thumbnail rounded data-tooltip" style="max-width: 100%" src="https://d1g3ayfrf0i21j.cloudfront.net/media/{{ get_complex.2 }}">
+                                    <div class="custom-tooltip"></div>
+                                </div>
                                 {% endif %}
-                            {% endfor %}
-                        </td>
-                    </div>
-                    <div class="col-lg-5">
-                        <td class="div-head">
-                            {% for get_complex in resp|complex:get_item %}
-                                {% if get_complex.0 != '' %}
-                                    {% if get_complex.0 == CHARACTER_COMPLEX.1 %}
-                                    <div style="display: inline-block;position: relative" class="div-head col-sm-4 col-md-3">
-                                        <img data-pk="{{ get_complex.1 }}" class="img-thumbnail rounded data-tooltip" style="max-width: 100%" src="https://d1g3ayfrf0i21j.cloudfront.net/media/{{ get_complex.2 }}">
-                                        <div class="custom-tooltip"></div>
-                                    </div>
-                                    {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </td>
+
+                    <td class="">
+                        {% for get_complex in resp|complex:get_item %}
+                            {% if get_complex.0 != '' %}
+                                {% if get_complex.0 == CHARACTER_COMPLEX.1 %}
+                                <div style="display: inline-block;position: relative" class="div-head col-sm-6 col-md-3">
+                                    <img data-pk="{{ get_complex.1 }}" class="mt-2 img-thumbnail rounded data-tooltip" style="max-width: 100%" src="https://d1g3ayfrf0i21j.cloudfront.net/media/{{ get_complex.2 }}">
+                                    <div class="custom-tooltip"></div>
+                                </div>
                                 {% endif %}
-                            {% endfor %}
-                        </td>
-                    </div>
+                            {% endif %}
+                        {% endfor %}
+                    </td>
                 </tr>
                 {% endif %}
             {% endfor %}

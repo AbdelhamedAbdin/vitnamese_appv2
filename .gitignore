@@ -1,3 +1,7 @@
 .idea/*
 env_win/*
 envp/*
+venv/*
+tempfiles/*
+venv
+

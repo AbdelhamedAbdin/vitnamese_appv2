@@ -3,10 +3,21 @@
 {% block title %} Introduction {% endblock %}
 
 {% block body %}
+<style>
+    .description {
+        text-decoration: underline;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+    .intro .paragraph p {
+        margin-bottom: 15px;
+    }
+</style>
     {% load static %}
     <div class="intro">
         <div class="container">
             <!-- Description -->
+            <br>
             <div class="description">{% trans 'Corpus Description' %}</div>
             <div class="paragraph">
                 <p>{% blocktrans %}Chinese-character-handwriting (CCW) has been acknowledged as the most challenging aspect of Chinese literacy due to the special properties of Chinese logography. Students who learn Chinese as a second language (CSL) usually lag in and get intimidated by learning CCW (Ke, 1996). To deepen the understanding of what difficulties CSL students face and how they learn CCW within different L1 language backgrounds, and further provide pedagogical benefit that are based on first-hand authentic materials, we set to construct a learner corpus of CCW error and make it reachable as an online resource for researchers and educators.{% endblocktrans %}</p>

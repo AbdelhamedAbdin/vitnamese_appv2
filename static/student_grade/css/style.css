@@ -43,14 +43,20 @@ button.lang-button {
     outline: none;
     display: inline-block;
 }
-.nav-color {
-    color: #FFF !important;
-}
 nav.navbar.navbar-expand-lg {
     background-image: url('https://d1g3ayfrf0i21j.cloudfront.net/media/Bannerv2.png');
-    min-height: 170px;
     background-repeat: round;
     background-blend-mode: overlay;
+}
+
+@media (min-width: 992px) {
+    nav.navbar.navbar-expand-lg {
+        height: 170px;
+    }
+}
+
+.nav-color {
+    color: #FFF !important;
 }
 button[name='language'] {
     outline: none !important;
@@ -222,49 +228,16 @@ button[name='language'] {
     border-bottom-width: 1px !important;
 }
 /* Start Intro */
-.intro {
-    margin: 25px 0;
-}
-.intro table {
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
-}
 .intro .title {
-    font-size: 22px;
-}
-.intro img {
-    width: 100%;
-    height: 200px;
-    margin: 20px 0;
-}
-.intro .description {
-    text-decoration: underline;
-    font-weight: bold;
-}
-.intro .paragraph p {
-    font-size: 1.1rem;
-}
-.intro table, .intro td, .intro th {
-    border: 1px solid #BBB;
-    text-align: center;
-    padding: 8px;
-}
-.intro table th span {
-    display: block;
-}
-.intro table th span:first-child {
-    text-align: right;
-}
-.intro .table-2 hr {
-    margin-top: 0;
-    margin-bottom: 0;
-    border-top: 1px solid rgba(0,0,0,.1);
-    position: absolute;
-    left: 0;
-    width: 100%;
-}
-.intro .table-2 th {
-    position: relative;
+    font-size: 20px;
 }
 /* End Intro */
+/* Grade table */
+td.div-head img {
+    min-width: 110px;
+    min-height: 100px;
+    max-height: 100px;
+    margin-bottom: 2px;
+    margin-top: 2px;
+    padding: 3px
+}

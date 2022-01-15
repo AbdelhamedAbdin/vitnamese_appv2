@@ -34,25 +34,43 @@
             <!-- navbar collapsed data -->
             <div class="mt-2 collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item {% if request.path|splitter:"/"|length == 1 %}active{% endif %} nav-links">
-                        <a class="nav-link" href="{% url 'student_grade:accuracy_analysis' %}">
-                        {% trans 'Accuracy analysis' %}
-                        <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                    <li class="nav-item {% if 'error' in request.path|splitter:"/" %}active{% endif %} nav-links">
-                        <a class="nav-link" href="{% url 'student_grade:error_analysis' %}">
-                        {% trans 'Error analysis' %}
-                        <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
+                    <!-- Introduction -->
                     <li class="nav-item {% if 'introduction' in request.path|splitter:"/" %}active{% endif %} nav-links">
                         <a class="nav-link" href="{% url 'intro:introduction' %}">
-                        {% trans 'Error analysis' %}
-                        Introduction
+                        {% trans 'Introduction' %}
                         <span class="sr-only">(current)</span>
                         </a>
                     </li>
+                    <!-- menu -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Analysis
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'student_grade:error_analysis' %}">
+                                {% trans 'Error analysis' %}
+                                <span class="sr-only">(current)</span>
+                            </a>
+                            <a class="dropdown-item" href="{% url 'student_grade:accuracy_analysis' %}">
+                                {% trans 'Accuracy analysis' %}
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </div>
+                    </li>
+                    <!-- Accuracy Analysis -->
+{#                    <li class="nav-item {% if request.path|splitter:"/"|length == 1 %}active{% endif %} nav-links">#}
+{#                        <a class="nav-link" href="{% url 'student_grade:accuracy_analysis' %}">#}
+{#                        {% trans 'Accuracy analysis' %}#}
+{#                        <span class="sr-only">(current)</span>#}
+{#                        </a>#}
+{#                    </li>#}
+                    <!-- Error Analysis -->
+{#                    <li class="nav-item {% if 'error' in request.path|splitter:"/" %}active{% endif %} nav-links">#}
+{#                        <a class="nav-link" href="{% url 'student_grade:error_analysis' %}">#}
+{#                        {% trans 'Error analysis' %}#}
+{#                        <span class="sr-only">(current)</span>#}
+{#                        </a>#}
+{#                    </li>#}
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <form method="post" action="{% url 'student_grade:trans_func' %}">

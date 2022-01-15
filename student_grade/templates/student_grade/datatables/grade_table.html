@@ -1,11 +1,26 @@
 {% load i18n %}
 {% load custom_filter %}
 
+<style>
+    table thead th:not(:first-child) {
+        width: calc(100% / 3);
+    }
+    td .div-head img {
+        min-width: 90%;
+        max-width: 90%;
+        min-height: 90px;
+        max-height: 90px;
+        margin-bottom: 2px;
+        margin-top: 2px;
+        padding: 3px
+    }
+</style>
+
 <table class="table text-center table-bordered">
     <thead>
         <tr style="max-width: 100%">
             <th scope="col">
-                {% trans 'Error number' %}
+                {% trans 'Grade' %}
             </th>
             {% for grade in STUDENT_GRADE %}
                 <th scope="col">{{ grade }}</th>

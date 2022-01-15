@@ -1,19 +1,29 @@
 {% load custom_filter %}
 {% load i18n %}
 <style>
-    td.div-head img {
-    min-width: 110px;
-    min-height: 100px;
-    max-height: 100px;
+    td .div-head img {
+    min-width: 90%;
+    max-width: 90%;
+    min-height: 90px;
+    max-height: 90px;
     margin-bottom: 2px;
     margin-top: 2px;
     padding: 3px
-}
+    }
+    table thead th:not(:first-of-type) {
+        width: calc(100% / 2) !important;
+    }
+    @media (max-width: 576px) {
+        img {
+            width: 100px;
+            height: 50px;
+        }
+    }
 </style>
 <table class="table text-center table-bordered">
     <thead>
         <tr style="max-width: 100%">
-            <th scope="col">{% trans 'Error number' %}</th>
+            <th scope="col">{% trans 'Gender' %}</th>
             {% for gender in STUDENT_GENDER %}
                 <th scope="col">{{ gender }}</th>
             {% endfor %}
@@ -24,16 +34,16 @@
             {% for get_item in error_number_unique %}
                 {% if get_item %}
                 <tr>
-                    <td style="width: 10%;font-size: 16px">
+                    <td style="font-size: 16px">
                         <div>{{ get_item }}</div>
                     </td>
-                    <td style="width: 45%">
-                        <div class="div-head col-lg-12 mt-3">
+                    <td style=''>
+                        <div class="">
                             {% for get_gender in resp|gender:get_item %}
                                 {% if get_gender.0 != '' %}
                                     {% if get_gender.0 == STUDENT_GENDER.0 %}
-                                    <div style="display: inline-block;position: relative" class="div-head col-sm-3">
-                                        <img data-pk="{{ get_gender.1 }}" class="img-thumbnail rounded data-tooltip" style="max-width: 100%" src="https://d1g3ayfrf0i21j.cloudfront.net/media/{{ get_gender.2 }}">
+                                    <div style="display: inline-block;position: relative" class="div-head col-md-3 col-sm-6">
+                                        <img data-pk="{{ get_gender.1 }}" class="mt-2 img-thumbnail rounded data-tooltip" style="max-width: 100%" src="https://d1g3ayfrf0i21j.cloudfront.net/media/{{ get_gender.2 }}">
                                         <div class="custom-tooltip"></div>
                                     </div>
                                     {% endif %}
@@ -41,13 +51,13 @@
                             {% endfor %}
                         </div>
                     </td>
-                    <td style="width: 45%">
-                        <div class="div-head col-lg-12 mt-3">
+                    <td style="">
+                        <div class="">
                             {% for get_gender in resp|gender:get_item %}
                                 {% if get_gender.0 != '' %}
                                     {% if get_gender.0 == STUDENT_GENDER.1 %}
-                                    <div style="display: inline-block;position: relative" class="div-head col-sm-3">
-                                        <img data-pk="{{ get_gender.1 }}" class="img-thumbnail rounded data-tooltip" style="max-width: 100%" src="https://d1g3ayfrf0i21j.cloudfront.net/media/{{ get_gender.2 }}">
+                                    <div style="display: inline-block;position: relative" class="div-head col-md-3 col-sm-6">
+                                        <img data-pk="{{ get_gender.1 }}" class="mt-2 img-thumbnail rounded data-tooltip" style="max-width: 100%" src="https://d1g3ayfrf0i21j.cloudfront.net/media/{{ get_gender.2 }}">
                                         <div class="custom-tooltip"></div>
                                     </div>
                                     {% endif %}

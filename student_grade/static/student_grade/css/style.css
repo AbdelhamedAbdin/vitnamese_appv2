@@ -231,6 +231,15 @@ button[name='language'] {
 .intro .title {
     font-size: 20px;
 }
+.intro table {
+    margin-left: auto;
+    margin-right: auto;
+}
+.intro table tr td,
+.intro table tr th {
+    border: 1px solid;
+    padding: 3px
+}
 /* End Intro */
 /* Grade table */
 td.div-head img {
